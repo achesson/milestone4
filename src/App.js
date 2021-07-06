@@ -14,12 +14,15 @@ function App() {
   const handleChangeView = (isAdmin) => {
     setIsAdmin(isAdmin);
   };
-
+  
   return (
     <div>
       <button onClick={() => handleChangeView(true)}>ADMIN</button>
       <button onClick={() => handleChangeView(false)}>USER</button>
-      <AdminView addProject={(newProject) => handleAddProject(newProject)} />
+        { (isAdmin === true) 
+        ? <AdminView addProject={(newProject) => handleAddProject(newProject)} />
+        : <UserView/> 
+        }
     </div>
   );
 }
